@@ -288,7 +288,7 @@
 
       <span class="chip">快速</span>
       <button class="btn primary" id="btnToday">📍 今日行程</button>
-      <button class="btn primary" id="btnNavToggle">🧭 導航：關</button>
+      <button class="btn primary" id="btnNavToggle">🧭 導航：開</button>
 
       <span class="chip">時間</span>
       <select id="sortSel" aria-label="排序">
@@ -718,7 +718,7 @@ const itinerary = [
 let activeKey = itinerary[0].key;
 let sortMode = "original";
 let slotFilter = "all";
-let navEnabled = false;
+let navEnabled = true;
 let navPointer = { dayKey: activeKey, itemIdx: 0 };
 
 /** ========= 篩選與排序 ========= */
@@ -1156,8 +1156,8 @@ $btnNext.onclick = ()=> moveNav(+1);
 /** ========= 初始化 ========= */
 setTheme(localStorage.getItem('tokyo_theme') || 'light');
 setFont(parseInt(localStorage.getItem('tokyo_font') || "16", 10));
-render();
-activate(activeKey, {keepNavPointer:true});
+// 預設開啟導航模式
+setNavEnabled(true);
 </script>
 </body>
 </html>
