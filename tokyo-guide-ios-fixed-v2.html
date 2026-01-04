@@ -1,0 +1,1163 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>日本東京行程導覽（2026/1/10–1/14）</title>
+  <style>
+
+    :root{
+      --bg:#fafafa; --card:#ffffff; --text:#111111; --muted:#666666;
+      --border:#dddddd; --accent:#2563eb; --accent2:#0ea5e9;
+      --chip:#f3f4f6; --shadow:0 6px 18px rgba(0,0,0,.08);
+      --radius:16px; --pad:14px; --base:16px;
+      --font: system-ui, -apple-system, "Segoe UI", Arial, "PingFang TC", "Noto Sans TC", sans-serif;
+
+      /* iOS-like surfaces */
+      --headerbg: rgba(250,250,250,.86);
+      --btnbg: #ffffff;
+      --btnbg2:#f3f4f6;
+      --accentbg: rgba(37,99,235,.12);
+      --accentring: rgba(37,99,235,.18);
+      --accentline: rgba(37,99,235,.45);
+      --linkbg: rgba(37,99,235,.10);
+      --itembg: #fbfbfc;
+      --blockbg: #ffffff;
+    }
+    [data-theme="dark"]{
+      --bg:#0b0f14; --card:#111827; --text:#e5e7eb; --muted:#9ca3af;
+      --border:#243244; --chip:#0f172a; --shadow:0 10px 24px rgba(0,0,0,.35);
+      --accent:#60a5fa; --accent2:#38bdf8;
+
+      --headerbg: rgba(11,15,20,.80);
+      --btnbg: #111827;
+      --btnbg2:#0f172a;
+      --accentbg: rgba(96,165,250,.14);
+      --accentring: rgba(96,165,250,.18);
+      --accentline: rgba(96,165,250,.55);
+      --linkbg: rgba(96,165,250,.12);
+      --itembg: rgba(255,255,255,.03);
+      --blockbg: rgba(255,255,255,.03);
+    }
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:var(--font); font-size:var(--base);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    .wrap{max-width:1000px;margin:0 auto;padding:14px 14px 110px}
+    header{
+      position:sticky; top:0; z-index:20;
+      background:var(--headerbg);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:saturate(1.2) blur(10px);
+    }
+    .head-inner{max-width:1000px;margin:0 auto;padding:12px 14px}
+    h1{margin:0 0 6px;font-size:20px;line-height:1.25}
+    .sub{color:var(--muted);font-size:13px;line-height:1.4}
+
+    /* ===== iOS-like controls ===== */
+    .toolbar{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top:10px;
+    }
+
+    .btn, .chip, input, select{
+      -webkit-appearance:none;
+      appearance:none;
+      height:44px;
+      padding:0 14px;
+      border-radius:999px;
+      font-size:15px;
+      line-height:44px;
+      border:1px solid rgba(0,0,0,.10);
+      background:var(--btnbg);
+      color:var(--text);
+      box-shadow:0 1px 0 rgba(0,0,0,.02);
+    }
+    [data-theme="dark"] .btn,
+    [data-theme="dark"] .chip,
+    [data-theme="dark"] input,
+    [data-theme="dark"] select{
+      border-color: rgba(255,255,255,.10);
+    }
+
+    .btn{
+      cursor:pointer;
+      font-weight:800;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .btn:active{transform:scale(.98); filter:brightness(.98);}
+
+    .btn.primary{
+      border-color: var(--accentline);
+      background: var(--accentbg);
+      font-weight:900;
+    }
+
+    .chip{
+      background:var(--btnbg2);
+      font-weight:900;
+    }
+
+    .mini{
+      height:36px !important;
+      line-height:36px !important;
+      padding:0 12px !important;
+      font-size:13px !important;
+      gap:6px !important;
+    }
+
+    /* 下拉箭頭（不依賴 color-mix） */
+    select{
+      padding-right:36px;
+      background-image:
+        linear-gradient(45deg, transparent 50%, rgba(0,0,0,.45) 50%),
+        linear-gradient(135deg, rgba(0,0,0,.45) 50%, transparent 50%);
+      background-position:
+        calc(100% - 18px) 19px,
+        calc(100% - 12px) 19px;
+      background-size:6px 6px, 6px 6px;
+      background-repeat:no-repeat;
+    }
+    [data-theme="dark"] select{
+      background-image:
+        linear-gradient(45deg, transparent 50%, rgba(255,255,255,.55) 50%),
+        linear-gradient(135deg, rgba(255,255,255,.55) 50%, transparent 50%);
+    }
+
+    /* iOS Search Bar */
+    input[type="search"]{
+      flex:1 1 260px;
+      min-width:220px;
+      max-width:100%;
+      padding:0 14px 0 40px;
+      border-radius:16px;
+      line-height:44px;
+      height:44px;
+      background:var(--btnbg2);
+      outline:none;
+      background-image:
+        radial-gradient(circle at 18px 22px, rgba(0,0,0,.35) 0 6px, transparent 7px),
+        linear-gradient(45deg, rgba(0,0,0,.35) 0 2px, transparent 0);
+      background-size: 24px 44px, 10px 10px;
+      background-position: 6px 0, 28px 30px;
+      background-repeat:no-repeat;
+    }
+    [data-theme="dark"] input[type="search"]{
+      background-image:
+        radial-gradient(circle at 18px 22px, rgba(255,255,255,.45) 0 6px, transparent 7px),
+        linear-gradient(45deg, rgba(255,255,255,.45) 0 2px, transparent 0);
+    }
+    input[type="search"]:focus{
+      box-shadow:0 0 0 4px var(--accentring);
+      border-color: var(--accentline);
+      background: var(--btnbg);
+    }
+    input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:auto;}
+    #btnClear{flex:0 0 auto;}
+
+    /* Tabs */
+    .tabs{display:flex; gap:8px; overflow:auto; padding:10px 0 4px; scrollbar-width:none}
+    .tabs::-webkit-scrollbar{display:none}
+    .tab{
+      flex:0 0 auto; cursor:pointer; user-select:none;
+      padding:10px 12px; border-radius:999px; border:1px solid var(--border);
+      background:var(--card); font-weight:900; font-size:14px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tab.active{border-color:var(--accent); box-shadow:0 0 0 3px var(--accentring)}
+
+    .panel{display:none; margin-top:12px}
+    .panel.active{display:block}
+    .day-card{
+      background:var(--card); border:1px solid var(--border);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:var(--pad); margin:12px 0;
+    }
+    .day-title{display:flex; gap:10px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; margin-bottom:10px;}
+    .day-title h2{margin:0; font-size:18px}
+    .note{color:var(--muted); font-size:13px; line-height:1.55}
+    .hero{border:1px solid var(--border); border-radius:14px; overflow:hidden; background:var(--btnbg2); margin:12px 0;}
+    .hero .cap{padding:10px 12px; border-top:1px solid var(--border); color:var(--muted); font-size:13px; line-height:1.5;}
+    .items{margin-top:10px; display:flex; flex-direction:column; gap:10px}
+    details.item{background:var(--itembg); border:1px solid var(--border); border-radius:14px; padding:10px 12px;}
+    details.item.nav-current{border-color:var(--accent); box-shadow:0 0 0 3px var(--accentring);}
+    summary{list-style:none; cursor:pointer; display:flex; gap:10px; align-items:flex-start; justify-content:space-between; -webkit-tap-highlight-color: transparent;}
+    summary::-webkit-details-marker{display:none}
+    .left{min-width:0; display:flex; gap:10px; align-items:flex-start;}
+    .time{
+      flex:0 0 auto;
+      font-weight:900; color:var(--accent);
+      font-variant-numeric:tabular-nums;
+      padding:3px 8px; border-radius:999px; background:rgba(37,99,235,.10);
+      border:1px dashed rgba(37,99,235,.35);
+      font-size:13px; line-height:1.2; margin-top:2px;
+    }
+    [data-theme="dark"] .time{
+      background:rgba(96,165,250,.12);
+      border-color:rgba(96,165,250,.45);
+    }
+    .title{font-weight:900; line-height:1.35; word-break:break-word;}
+    .meta{color:var(--muted); font-size:12.5px; margin-top:2px}
+    .right{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+    .content{margin-top:10px; padding-top:10px; border-top:1px dashed var(--border); display:flex; flex-direction:column; gap:8px}
+    .block{background:var(--blockbg); border:1px solid var(--border); border-radius:12px; padding:10px 12px;}
+    .block h3{margin:0 0 6px; font-size:13px; color:var(--muted); letter-spacing:.02em}
+    .block p{margin:0; line-height:1.6}
+    .links{display:flex; gap:8px; flex-wrap:wrap}
+
+    /* ✅ 地圖/連結按鈕：去除框線 */
+    a.linkbtn{
+      text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+      border:0; border-radius:999px;
+      padding:8px 10px;
+      background:var(--linkbg);
+      color:var(--text); font-size:13px; font-weight:900;
+      -webkit-tap-highlight-color: transparent;
+      white-space:nowrap;
+    }
+    a.linkbtn.mini{font-size:12.5px; padding:7px 10px;}
+
+    .toast{
+      position:fixed; top:14px; right:14px; z-index:50;
+      background:var(--card); border:1px solid var(--border);
+      border-radius:14px; box-shadow:var(--shadow);
+      padding:10px 12px; font-size:13px; color:var(--text);
+      display:none;
+      max-width:min(360px, calc(100vw - 28px));
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--chip);
+      font-size:12.5px;
+      font-weight:900;
+    }
+    .row{display:flex; flex-wrap:wrap; gap:10px; align-items:center;}
+    .spacer{flex:1}
+    .hint{color:var(--muted); font-size:12.5px}
+    mark{background: rgba(14,165,233,.18); color:inherit; padding:0 2px; border-radius:4px}
+
+    /* 導航模式底部列 */
+    .navBar{
+      position:fixed; left:0; right:0; bottom:0; z-index:40;
+      border-top:1px solid var(--border);
+      background:var(--headerbg);
+      backdrop-filter:saturate(1.2) blur(10px);
+    }
+    .navInner{
+      max-width:1000px; margin:0 auto; padding:10px 14px;
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:space-between;
+    }
+    .navInfo{color:var(--muted); font-size:12.5px; line-height:1.4; min-width:220px}
+    .navGroup{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+    .hidden{display:none}
+
+    /* ✅ 導航模式只顯示當天：隱藏 tabs */
+    body.nav-mode .tabs{display:none}
+
+  </style>
+</head>
+<body>
+<header>
+  <div class="head-inner">
+    <h1>日本東京行程導覽（離線版）</h1>
+    <div class="sub">
+      ✅ 離線導覽｜🗺️ 地圖：Google Maps<br>
+      🧭 導航：上一/下一｜⏱️ 排序＋時段濾鏡
+    </div>
+
+    <div class="toolbar">
+      <button class="btn" id="toggleTheme">🌙 夜間模式</button>
+      <span class="chip">字級</span>
+      <button class="btn" id="fontMinus">A−</button>
+      <button class="btn" id="fontPlus">A+</button>
+
+      <span class="chip">快速</span>
+      <button class="btn primary" id="btnToday">📍 今日行程</button>
+      <button class="btn primary" id="btnNavToggle">🧭 導航：關</button>
+
+      <span class="chip">時間</span>
+      <select id="sortSel" aria-label="排序">
+        <option value="original" selected>原順序</option>
+        <option value="time">依時間排序</option>
+      </select>
+      <select id="slotSel" aria-label="時段濾鏡">
+        <option value="all" selected>全部時段</option>
+        <option value="morning">上午</option>
+        <option value="afternoon">下午</option>
+        <option value="evening">晚上</option>
+        <option value="unknown">無明確時間</option>
+      </select>
+
+      <span class="spacer"></span>
+      <input id="searchBox" type="search" placeholder="搜尋：地點 / 餐廳 / 關鍵字" />
+      <button class="btn" id="btnClear">清除</button>
+    </div>
+
+    <div class="tabs" id="tabs"></div>
+  </div>
+</header>
+
+<div class="wrap" id="panels"></div>
+
+<!-- 導航模式底部列 -->
+<div class="navBar hidden" id="navBar">
+  <div class="navInner">
+    <div class="navInfo" id="navInfo">導航模式已開啟。</div>
+    <div class="navGroup">
+      <button class="btn" id="btnPrev">⬅️ 上一個</button>
+      <button class="btn primary" id="btnNext">下一個 ➡️</button>
+      <button class="btn" id="btnExitNav">退出導航</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/** ========= 小工具 ========= */
+const $tabs = document.getElementById('tabs');
+const $panels = document.getElementById('panels');
+const $toast = document.getElementById('toast');
+const $searchBox = document.getElementById('searchBox');
+const $sortSel = document.getElementById('sortSel');
+const $slotSel = document.getElementById('slotSel');
+
+function toast(msg){
+  $toast.textContent = msg;
+  $toast.style.display = 'block';
+  clearTimeout(toast._t);
+  toast._t = setTimeout(()=> $toast.style.display='none', 1800);
+}
+function escapeHTML(s){
+  return (s||"").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function encodeQ(s){ return encodeURIComponent((s||"").trim()); }
+function mapsSearchLink(query){
+  const q = encodeQ(query);
+  return `https://www.google.com/maps/search/?api=1&query=${q}`;
+}
+function escapeRegExpStr(s){
+  s = String(s||"");
+  var pairs = [
+    ["\\","\\\\"],
+    [".","\\."],
+    ["*","\\*"],
+    ["+","\\+"],
+    ["?","\\?"],
+    ["^","\\^"],
+    ["$","\\$"],
+    ["{","\\{"],
+    ["}","\\}"],
+    ["(","\\("],
+    [")","\\)"],
+    ["|","\\|"],
+    ["[","\\["],
+    ["]","\\]"]
+  ];
+  for(var i=0;i<pairs.length;i++){
+    var a = pairs[i][0], b = pairs[i][1];
+    s = s.split(a).join(b);
+  }
+  return s;
+}
+function maybeHighlight(text, keyword){
+  if(!keyword) return escapeHTML(text);
+  var esc = escapeHTML(text);
+  var k = escapeRegExpStr(keyword);
+  try{ return esc.replace(new RegExp(k, 'gi'), function(m){ return '<mark>'+m+'</mark>'; }); }
+  catch(e){ return esc; }
+}
+function typeIcon(type){
+  const t = (type||"").toLowerCase();
+  if(t.includes("交通") || t.includes("航班")) return "🚆";
+  if(t.includes("住宿")) return "🏨";
+  if(t.includes("餐") || t.includes("甜點") || t.includes("小吃")) return "🍜";
+  if(t.includes("景點") || t.includes("拍照")) return "📸";
+  if(t.includes("逛")) return "🛍️";
+  if(t.includes("集合")) return "🧭";
+  if(t.includes("體驗")) return "🎟️";
+  if(t.includes("採買") || t.includes("伴手禮")) return "🎁";
+  if(t.includes("一日遊")) return "🗻";
+  return "📍";
+}
+
+/** ========= 時間解析 / 時段濾鏡 ========= */
+function parseTimeToMinutes(timeStr){
+  const s = (timeStr||"").toLowerCase();
+  const m = s.match(/(\d{1,2})\s*[:：]\s*(\d{2})/);
+  if(m){
+    const hh = Math.max(0, Math.min(23, parseInt(m[1],10)));
+    const mm = Math.max(0, Math.min(59, parseInt(m[2],10)));
+    return hh*60 + mm;
+  }
+  if(s.includes("早餐")) return 8*60;
+  if(s.includes("午餐")) return 12*60;
+  if(s.includes("晚餐")) return 18*60;
+  return null;
+}
+function timeSlot(timeStr){
+  const mins = parseTimeToMinutes(timeStr);
+  if(mins == null) return "unknown";
+  const hh = Math.floor(mins/60);
+  if(hh >= 5 && hh <= 11) return "morning";
+  if(hh >= 12 && hh <= 16) return "afternoon";
+  return "evening";
+}
+
+/** ========= 內建 SVG 圖片（離線可顯示） ========= */
+function heroSVG(kind){
+  const common = `
+    <svg viewBox="0 0 1200 360" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="行程圖片">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="rgba(37,99,235,0.18)"/>
+          <stop offset="1" stop-color="rgba(14,165,233,0.10)"/>
+        </linearGradient>
+        <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="rgba(255,255,255,0.55)"/>
+          <stop offset="1" stop-color="rgba(255,255,255,0.0)"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1200" height="360" fill="url(#g1)"/>
+      <rect x="0" y="0" width="1200" height="120" fill="url(#g2)"/>
+  `;
+  const end = `</svg>`;
+  if(kind==="arrival"){
+    return common + `
+      <path d="M190 140 l140 35 260 -80 40 12 -210 95 120 30 -10 25 -155 -40 -70 30 32 55 -25 10 -45 -55 -62 25 -20 -5 60 -38 -145 -44 z"
+            fill="rgba(17,24,39,0.35)"/>
+      <rect x="0" y="270" width="1200" height="90" fill="rgba(17,24,39,0.10)"/>
+      <g fill="rgba(17,24,39,0.18)">
+        <rect x="70" y="210" width="60" height="150"/><rect x="150" y="235" width="50" height="125"/>
+        <rect x="220" y="195" width="80" height="165"/><rect x="320" y="240" width="50" height="120"/>
+        <rect x="400" y="180" width="90" height="180"/><rect x="510" y="220" width="60" height="140"/>
+        <rect x="600" y="200" width="70" height="160"/><rect x="690" y="230" width="55" height="130"/>
+        <rect x="770" y="190" width="85" height="170"/><rect x="870" y="240" width="55" height="120"/>
+        <rect x="940" y="210" width="70" height="150"/><rect x="1030" y="230" width="55" height="130"/>
+      </g>
+      <circle cx="1020" cy="150" r="40" fill="rgba(14,165,233,0.22)"/>
+      <circle cx="1006" cy="142" r="5" fill="rgba(17,24,39,0.35)"/>
+      <circle cx="1034" cy="142" r="5" fill="rgba(17,24,39,0.35)"/>
+      <path d="M1010 162 q10 10 20 0" stroke="rgba(17,24,39,0.35)" stroke-width="4" fill="none" stroke-linecap="round"/>
+    ` + end;
+  }
+  if(kind==="asakusa"){
+    return common + `
+      <rect x="230" y="120" width="40" height="170" rx="8" fill="rgba(239,68,68,0.25)"/>
+      <rect x="470" y="120" width="40" height="170" rx="8" fill="rgba(239,68,68,0.25)"/>
+      <rect x="200" y="110" width="340" height="38" rx="12" fill="rgba(239,68,68,0.22)"/>
+      <rect x="220" y="160" width="300" height="20" rx="10" fill="rgba(239,68,68,0.18)"/>
+      <path d="M860 80 l60 0 20 40 -40 0 30 180 -120 0 30 -180 -40 0 20 -40 z"
+            fill="rgba(245,158,11,0.20)"/>
+      <rect x="0" y="285" width="1200" height="75" fill="rgba(17,24,39,0.08)"/>
+    ` + end;
+  }
+  if(kind==="harajuku"){
+    return common + `
+      <g fill="rgba(14,165,233,0.18)">
+        <rect x="160" y="110" width="180" height="120" rx="18"/>
+        <rect x="360" y="140" width="220" height="140" rx="18" fill="rgba(37,99,235,0.16)"/>
+        <rect x="610" y="120" width="180" height="160" rx="18" fill="rgba(168,85,247,0.12)"/>
+      </g>
+      <path d="M950 140 c-20-25-60-5-55 25 5 30 55 55 55 55s50-25 55-55c5-30-35-50-55-25z"
+            fill="rgba(239,68,68,0.18)"/>
+      <rect x="0" y="285" width="1200" height="75" fill="rgba(17,24,39,0.07)"/>
+    ` + end;
+  }
+  if(kind==="fuji"){
+    return common + `
+      <path d="M280 280 L470 110 L660 280 Z" fill="rgba(17,24,39,0.16)"/>
+      <path d="M470 110 L520 170 L420 170 Z" fill="rgba(255,255,255,0.50)"/>
+      <path d="M0 290 Q300 250 600 290 T1200 290 L1200 360 L0 360 Z" fill="rgba(14,165,233,0.12)"/>
+      <g fill="rgba(17,24,39,0.10)">
+        <rect x="820" y="220" width="70" height="70" rx="8"/>
+        <path d="M820 220 L855 190 L890 220 Z" fill="rgba(17,24,39,0.12)"/>
+        <rect x="910" y="235" width="60" height="55" rx="8"/>
+        <path d="M910 235 L940 210 L970 235 Z" fill="rgba(17,24,39,0.12)"/>
+      </g>
+    ` + end;
+  }
+  return common + `
+    <path d="M250 210 h520" stroke="rgba(17,24,39,0.18)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M760 210 l-30 -24 v48 z" fill="rgba(17,24,39,0.18)"/>
+    <circle cx="180" cy="210" r="55" fill="rgba(37,99,235,0.18)"/>
+    <text x="180" y="220" text-anchor="middle" font-size="34" fill="rgba(17,24,39,0.35)" font-family="system-ui">✈️</text>
+    <rect x="0" y="285" width="1200" height="75" fill="rgba(17,24,39,0.07)"/>
+  ` + end;
+}
+
+/** ========= 行程資料 ========= */
+const itinerary = [
+  {
+    key:"2026-01-10",
+    label:"1/10（六）入境・新宿",
+    dateText:"2026/1/10（六）",
+    heroKind:"arrival",
+    dayIntro:"今天從桃園出發抵達東京成田，搭乘 N'EX 前往新宿，晚上散步歌舞伎町、看 3D 巨大花貓與哥吉拉，熟悉周邊動線，為明天行程暖身。",
+    items:[
+      { time:"台灣10:40", title:"桃園國際機場第一航廈｜出發", type:"交通", place:"桃園國際機場第一航廈",
+        guide:"各位旅客我們即將從桃園出發。請確認護照、機票與隨身行李都在身邊；過安檢後可再補買飲水或小點心。"
+      },
+      { time:"日本14:55", title:"東京成田機場 第一航廈｜抵達", type:"交通", place:"成田國際機場 第一航廈",
+        guide:"歡迎抵達東京成田機場。下機後依指標前往入境審查、行李提領，完成後再出關。接下來我們要買 N'EX 車票前往新宿。"
+      },
+      { time:"16:00", title:"出關", type:"流程", place:"成田機場 出關",
+        guide:"出關後先集合點名，確認每位成員都拿到行李與隨身物品，再前往 JR 售票機購買 N'EX 來回票。"
+      },
+      { time:"—", title:"JR 售票機｜買 N'EX 東京去回車票（準備護照）", type:"交通", place:"成田機場 JR 售票機 Narita Express",
+        guide:"售票時會需要護照資訊。買好後請把車票與收據分開收好，進站前再一起核對車次與月台。"
+      },
+      { time:"約16:19→", title:"搭 N'EX 到新宿（Narita Express）", type:"交通", place:"Narita Express 新宿",
+        detail:"NEX 停靠的 5、6 號月台位於較南部位置。請遵循「南口/新南口」指標，避免在地下道迷路。",
+        guide:"到新宿站後車站很大，請跟著「南口／新南口」方向走，避免在地下道迷路。大家先到集合點再分開行動。"
+      },
+      { time:"18:30–18:45", title:"計程車/Uber 到飯店放行李（約2km）", type:"交通", place:"相鐵FRESA INN 東新宿站前",
+        detail:"日本計程車後座為自動門，由司機控制。",
+        guide:"抵達後先放行李、確認房間與備品。提醒：日本計程車後座是自動門，請等司機開門再上車。"
+      },
+      { time:"—", title:"飯店：相鐵FRESA INN 東新宿站前", type:"住宿", place:"相鐵FRESA INN 東新宿站前",
+        guide:"今晚住宿在東新宿站前。先熟悉最近的便利商店與車站入口，明天移動會更順。"
+      },
+      { time:"19:00", title:"晚餐：飯店附近吃", type:"餐飲", place:"東新宿 餐廳",
+        guide:"今晚以便利與補能量為主，飯店附近簡單用餐即可。"
+      },
+      { time:"—", title:"Bic Camera（新宿）", type:"逛街", place:"Bic Camera 新宿",
+        guide:"逛電器與生活用品。想買行動電源或轉接頭可先比價、記下型號。"
+      },
+      { time:"—", title:"3D 巨大花貓（新宿）", type:"景點", place:"Shinjuku 3D cat",
+        guide:"站在視角較正的位置拍照，等動畫出現時連拍幾張，效果最好。"
+      },
+      { time:"—", title:"歌舞伎町一番街招牌", type:"景點", place:"歌舞伎町一番街",
+        guide:"拍照注意人車往來，晚間行走保持結伴，集合時間與地點先說好。"
+      },
+      { time:"—", title:"哥吉拉（新宿東寶大樓）", type:"景點", place:"Godzilla Head Shinjuku",
+        guide:"可以用廣角把周邊霓虹燈一起收進來，畫面更有氣勢。"
+      },
+      { time:"—", title:"集合點確認：新宿 i-Land Tower LOVE 標誌前", type:"集合點", place:"Shinjuku i-Land Tower LOVE",
+        guide:"這是明天富士山一日遊的集合點。今晚先把路線與出口記清楚，明天早上就不慌不忙。"
+      }
+    ]
+  },
+  {
+    key:"2026-01-11",
+    label:"1/11（日）淺草・上野・秋葉原・東京鐵塔",
+    dateText:"2026/1/11（日）",
+    heroKind:"asakusa",
+    dayIntro:"經典東京路線：淺草寺吃小點、上野吃蟹道樂，再到秋葉原逛電器與動漫周邊，傍晚前往東京鐵塔拍照點。",
+    items:[
+      { time:"—", title:"兌換地鐵一日券（東新宿站內）", type:"交通", place:"東新宿站",
+        extraLinks:[{label:"🎫 Klook 一日券資訊", url:"https://www.klook.com/zh-TW/activity/1552-subway-ticket-tokyo/"}],
+        guide:"先處理地鐵一日券，今天移動點多，一日券會很省事。"
+      },
+      { time:"早餐", title:"飯店附近簡單吃（淺草再補）", type:"餐飲", place:"東新宿 早餐",
+        guide:"早餐先簡單吃一點，留肚子到淺草再品嚐點心。"
+      },
+      { time:"08:50–09:30", title:"淺草寺", type:"景點", place:"淺草寺",
+        extraLinks:[{label:"ℹ️ 求籤介紹", url:"https://matcha-jp.com/tw/948"}],
+        guide:"到淺草寺參拜，慢慢走仲見世通拍街景。參拜時保持安靜、尊重環境。"
+      },
+      { time:"—", title:"木村家人形燒 本店（雷門旁）", type:"小吃", place:"木村家人形焼 本店",
+        guide:"人形燒外皮香、內餡甜，適合邊走邊吃。"
+      },
+      { time:"—", title:"淺草吉備糰子 AZUMA（雷門旁）", type:"小吃", place:"淺草吉備糰子 あづま",
+        guide:"口感軟Q，建議買一份大家分著吃。"
+      },
+      { time:"—", title:"淺草九重炸饅頭", type:"小吃", place:"浅草九重",
+        guide:"熱熱吃很香，剛出爐會燙，先小口試溫度。"
+      },
+      { time:"—", title:"淺草炸肉餅", type:"小吃", place:"Asakusa Menchi",
+        guide:"香氣很足，建議分食，才不會太飽影響午餐。"
+      },
+      { time:"—", title:"壽々喜園 抹茶冰淇淋（較遠）", type:"甜點", place:"壽々喜園 淺草本店",
+        guide:"抹茶味很濃，時間充裕再去；若趕時間可改吃車站附近布丁。"
+      },
+      { time:"—", title:"淺草絲綢布丁（離車站近）", type:"甜點", place:"浅草シルクプリン",
+        guide:"口感細緻、方便外帶，適合快速收尾淺草行程。"
+      },
+      { time:"12:00", title:"午餐：蟹道樂 上野店", type:"餐飲", place:"かに道楽 上野店",
+        guide:"慢慢享受蟹料理的鮮甜；多人用餐先確認分食安排，節奏會更順。"
+      },
+      { time:"—", title:"秋葉原｜電器街＆扭蛋", type:"逛街", place:"秋葉原 電気街",
+        guide:"想買行動電源可留意日本品牌（如 ELECOM）。建議先看需求清單再下手。"
+      },
+      { time:"14:30", title:"女僕咖啡：めいどりーみん（秋葉原本店）", type:"體驗", place:"めいどりーみん 秋葉原 本店",
+        detail:"可能現場排隊半小時內",
+        guide:"依店家流程互動，拍照通常有規範，聽店員指引最安全。"
+      },
+      { time:"—", title:"MANDARAKE COMPLEX（二手動漫）", type:"逛街", place:"MANDARAKE COMPLEX",
+        guide:"二手動漫商品寶庫，想挖寶可以多翻翻。"
+      },
+      { time:"—", title:"壽屋 Kotobukiya（秋葉原）", type:"逛街", place:"コトブキヤ 秋葉原館",
+        guide:"商品較新，適合看模型與周邊；可先查樓層節省時間。"
+      },
+      { time:"—", title:"CHABARA 日本物產館（伴手禮）", type:"伴手禮", place:"CHABARA AKI-OKA MARCHE",
+        guide:"匯集各地食品、調味料與伴手禮，一次補齊很方便。"
+      },
+      { time:"—", title:"東京鐵塔｜拍照點（赤羽橋/芝公園/巷弄）", type:"拍照", place:"東京鐵塔",
+        guide:"依人潮彈性挑拍照點，原則是安全第一，找不擋路的位置停留。"
+      }
+    ]
+  },
+  {
+    key:"2026-01-12",
+    label:"1/12（一）明治神宮・原宿・惠比壽・澀谷",
+    dateText:"2026/1/12（一）",
+    heroKind:"harajuku",
+    dayIntro:"散步＋逛街日：明治神宮、原宿竹下通、惠比壽花園與觀景台，最後到澀谷一路逛到晚餐。",
+    items:[
+      { time:"08:30", title:"早餐：藍瓶咖啡（新宿）", type:"餐飲", place:"Blue Bottle Coffee Shinjuku",
+        guide:"先補體力。今天走路多，建議點主食＋咖啡。"
+      },
+      { time:"09:00–11:00", title:"明治神宮", type:"景點", place:"明治神宮",
+        guide:"走進參道先放慢步調，感受東京綠洲的靜謐；參拜時保持安靜與尊重。"
+      },
+      { time:"—", title:"原宿：COLUMBIA TOKYO FLAGSHIP", type:"逛街", place:"COLUMBIA TOKYO FLAGSHIP",
+        guide:"可試穿機能服尺寸；若猶豫先記型號晚點再決定。"
+      },
+      { time:"—", title:"竹下通逛街", type:"逛街", place:"竹下通り",
+        guide:"人潮密集，走路慢一點、注意集合點。"
+      },
+      { time:"—", title:"Marion 可麗餅", type:"甜點", place:"Marion Crepes Takeshita Street",
+        detail:"¥500–¥700",
+        guide:"拿到後先找不擋路的位置再吃、再拍照更安全。"
+      },
+      { time:"—", title:"Luke’s Lobster 龍蝦堡", type:"餐飲", place:"Luke's Lobster Harajuku",
+        detail:"¥2,000–3,000",
+        guide:"份量紮實，建議分食或搭配飲料。"
+      },
+      { time:"13:30", title:"惠比壽花園（午餐＋散步）", type:"餐飲", place:"惠比壽花園",
+        guide:"園區餐廳選擇多，吃完可以稍微散步再上觀景台。"
+      },
+      { time:"15:00–15:20", title:"Sky Lounge 38F 觀景台", type:"景點", place:"恵比寿ガーデンプレイスタワー 展望",
+        guide:"拍窗景可找角落減少反光；夕陽時段更美。"
+      },
+      { time:"15:40–21:00", title:"澀谷：八公/十字路口/Loft/任天堂/UNIQLO等", type:"逛街/景點", place:"澀谷站",
+        guide:"澀谷玩法就是一路走一路逛：先八公、十字路口，再依喜好逛百貨與旗艦店；每逛一段就回集合點確認人數。"
+      },
+      { time:"備案", title:"晚餐候選：ニイハオ 渋谷店（煎餃）", type:"餐飲", place:"ニイハオ 渋谷店",
+        guide:"想快速解決晚餐可選這家，速度快、份量剛好。"
+      }
+    ]
+  },
+  {
+    key:"2026-01-13",
+    label:"1/13（二）富士山一日遊",
+    dateText:"2026/1/13（二）",
+    heroKind:"fuji",
+    dayIntro:"早上新宿集合出發：新倉山淺間公園 → 河口湖（含餺飥午餐）→ 大石公園 → 西湖療癒之鄉 根場，傍晚回新宿解散。",
+    items:[
+      { time:"08:20", title:"集合：新宿 i-Land Tower LOVE 標誌前", type:"集合點", place:"Shinjuku i-Land Tower LOVE",
+        guide:"到達後先向領隊報到、確認人數。周邊人多，請站在指定位置等。"
+      },
+      { time:"10:30", title:"新倉山淺間公園（停留70分）", type:"景點", place:"新倉山浅間公園",
+        guide:"先衝觀景點拍經典構圖，再補拍鳥居與周邊；上下階梯注意腳步。"
+      },
+      { time:"12:00", title:"河口湖 Craft Park（停留120分）", type:"景點", place:"Kawaguchiko Craft Park",
+        detail:"用餐後可於湖畔散策，遠眺富士山",
+        guide:"湖畔散步視野很棒，風大時注意保暖與帽子。"
+      },
+      { time:"午餐", title:"山梨名物：餺飥麵", type:"餐飲", place:"ほうとう 河口湖",
+        guide:"麵條厚實、湯頭濃郁，冬天吃很適合。"
+      },
+      { time:"14:10", title:"大石公園（停留30分）", type:"景點", place:"大石公園 河口湖",
+        guide:"停留短，先找角度快速完成；可用廣角把湖、山、天空一起收進來。"
+      },
+      { time:"15:00", title:"西湖療癒之鄉 根場（停留50分）", type:"景點", place:"西湖いやしの里根場",
+        guide:"合掌村風格聚落很療癒；拍照注意不要打擾住戶。"
+      },
+      { time:"18:00", title:"回到新宿解散", type:"返回", place:"新宿駅",
+        guide:"下車後再確認隨身物品與戰利品；照片可先備份。"
+      },
+      { time:"晚餐", title:"日高屋（新宿）乾拉麵＋餃子＋燙青菜", type:"餐飲", place:"日高屋 新宿",
+        guide:"想快速吃飽就選日高屋，吃完早點休息。"
+      }
+    ]
+  },
+  {
+    key:"2026-01-14",
+    label:"1/14（三）新宿採買・返台",
+    dateText:"2026/1/14（三）",
+    heroKind:"return",
+    dayIntro:"最後一天：早餐→世界堂逛文具→新宿前往成田→免稅補貨→返台。",
+    items:[
+      { time:"09:30", title:"世界堂 新宿本店（文具）", type:"逛街", place:"世界堂 新宿本店",
+        guide:"文具天堂！先設定購買上限，避免買到失控。"
+      },
+      { time:"最晚12:38", title:"新宿出發 → 成田機場（預計14:00到）", type:"交通", place:"成田空港",
+        guide:"預留退稅、托運與安檢時間，別拖到最後才排隊。"
+      },
+      { time:"—", title:"成田機場：免稅店最後採買", type:"採買", place:"成田空港 免税店",
+        guide:"先確認登機門與登機時間，再去免稅店採買。"
+      },
+      { time:"日本16:35", title:"起飛", type:"航班", place:"成田空港",
+        guide:"登機前把護照、耳機與外套放容易拿的位置。"
+      },
+      { time:"台灣20:00", title:"抵達桃園機場", type:"抵達", place:"桃園國際機場",
+        guide:"領取托運行李後再離開，旅程圓滿結束！"
+      }
+    ]
+  }
+];
+
+/** ========= 狀態 ========= */
+let activeKey = itinerary[0].key;
+let sortMode = "original";
+let slotFilter = "all";
+let navEnabled = false;
+let navPointer = { dayKey: activeKey, itemIdx: 0 };
+
+/** ========= 篩選與排序 ========= */
+function matchesKeyword(day, it, keyword){
+  if(!keyword) return true;
+  const k = keyword.toLowerCase();
+  return (
+    (it.title||"").toLowerCase().includes(k) ||
+    (it.type||"").toLowerCase().includes(k) ||
+    (it.detail||"").toLowerCase().includes(k) ||
+    (it.place||"").toLowerCase().includes(k) ||
+    (day.label||"").toLowerCase().includes(k) ||
+    (day.dayIntro||"").toLowerCase().includes(k)
+  );
+}
+function passesSlot(it){
+  if(slotFilter === "all") return true;
+  return timeSlot(it.time) === slotFilter;
+}
+function getVisibleIndices(dayKey){
+  const day = itinerary.find(d=>d.key===dayKey);
+  if(!day) return [];
+  const keyword = ($searchBox.value||"").trim();
+  let arr = day.items
+    .map((it, idx)=>({it, idx}))
+    .filter(x=> matchesKeyword(day, x.it, keyword))
+    .filter(x=> passesSlot(x.it));
+
+  if(sortMode === "time"){
+    arr.sort((a,b)=>{
+      const ta = parseTimeToMinutes(a.it.time);
+      const tb = parseTimeToMinutes(b.it.time);
+      const va = (ta==null? 99999 : ta);
+      const vb = (tb==null? 99999 : tb);
+      if(va !== vb) return va - vb;
+      return a.idx - b.idx;
+    });
+  }
+  return arr.map(x=>x.idx);
+}
+
+/** ========= 渲染 ========= */
+function slotFilterLabel(v){
+  if(v==="morning") return "上午";
+  if(v==="afternoon") return "下午";
+  if(v==="evening") return "晚上";
+  if(v==="unknown") return "無明確時間";
+  return "全部時段";
+}
+
+function render(){
+  sortMode = $sortSel.value;
+  slotFilter = $slotSel.value;
+  const keyword = ($searchBox.value||"").trim();
+
+  $tabs.innerHTML = '';
+  $panels.innerHTML = '';
+
+  itinerary.forEach((day)=>{
+    const tab = document.createElement('div');
+    tab.className = 'tab' + (day.key===activeKey ? ' active':'');
+    tab.textContent = day.label;
+    tab.dataset.key = day.key;
+    tab.onclick = ()=>{
+      if(navEnabled){ toast("導航模式下請用「上一個/下一個」導航"); return; }
+      activate(day.key, {keepNavPointer:true});
+    };
+    $tabs.appendChild(tab);
+
+    const panel = document.createElement('div');
+    panel.className = 'panel' + (day.key===activeKey ? ' active':'');
+    panel.id = 'panel-'+day.key;
+
+    const todayBadge = isTodayKey(day.key) ? `<span class="badge">⭐ 今日</span>` : '';
+    const visibleIdx = getVisibleIndices(day.key);
+
+    const itemsHTML = visibleIdx.map((idx)=>{
+      const it = day.items[idx];
+      const icon = typeIcon(it.type);
+      const mapLink = mapsSearchLink(it.place || it.title);
+      const extraLinks = (it.extraLinks||[])
+        .map(x=> `<a class="linkbtn" href="${x.url}" target="_blank" rel="noopener noreferrer">${escapeHTML(x.label)}</a>`)
+        .join('');
+
+      return `
+        <details class="item" id="item-${day.key}-${idx}" data-day="${day.key}" data-idx="${idx}">
+          <summary>
+            <div class="left">
+              <div class="time">${escapeHTML(it.time || '—')}</div>
+              <div style="min-width:0">
+                <div class="title">${icon} ${maybeHighlight(it.title, keyword)}</div>
+                <div class="meta">${maybeHighlight(it.type || '', keyword)}${it.place ? ` ・ ${maybeHighlight(it.place, keyword)}` : ''}</div>
+              </div>
+            </div>
+            <div class="right">
+              <a class="linkbtn mini" href="${mapLink}" target="_blank" rel="noopener noreferrer">🗺️ 地圖</a>
+            </div>
+          </summary>
+
+          <div class="content">
+            ${it.detail ? `
+              <div class="block">
+                <h3>詳細</h3>
+                <p>${maybeHighlight(it.detail, keyword).replace(/\n/g,'<br>')}</p>
+              </div>
+            `:''}
+
+            <div class="block">
+              <h3>導覽重點</h3>
+              <p>${maybeHighlight(it.guide || '（此點尚未提供導覽重點）', keyword)}</p>
+            </div>
+
+            <div class="links">
+              ${extraLinks}
+            </div>
+          </div>
+        </details>
+      `;
+    }).join('');
+
+    panel.innerHTML = `
+      <div class="day-card">
+        <div class="day-title">
+          <div>
+            <div class="row" style="margin-bottom:6px">
+              <h2 style="margin:0">${escapeHTML(day.dateText)}｜${escapeHTML(day.label)}</h2>
+              ${todayBadge}
+            </div>
+            <div class="note">${maybeHighlight(day.dayIntro || '', keyword)}</div>
+            <div class="hint" style="margin-top:8px">
+              目前：${sortMode==="time" ? "依時間排序" : "原順序"} ｜ 時段：${slotFilterLabel(slotFilter)} ｜ 搜尋：${keyword?escapeHTML(keyword):"（無）"}
+            </div>
+          </div>
+
+          <div class="row" style="justify-content:flex-end">
+            <a class="btn mini" href="${mapsSearchLink(day.label)}" target="_blank" rel="noopener noreferrer">🗺️ 打開今日主要區域</a>
+          </div>
+        </div>
+
+        <div class="hero">
+          ${heroSVG(day.heroKind || "arrival")}
+          <div class="cap">🖼️ 內建示意圖（離線可顯示）｜提示：每個行程點都可按「地圖」快速定位</div>
+        </div>
+
+        ${visibleIdx.length===0 && (keyword || slotFilter!=="all") ? `
+          <div class="hint">沒有符合目前「搜尋/時段濾鏡」的行程點。</div>
+        `:''}
+
+        <div class="items">${itemsHTML}</div>
+      </div>
+    `;
+
+    $panels.appendChild(panel);
+  });
+
+  if(navEnabled){
+    ensureNavPointerValid(false);
+    highlightNavCurrent();
+    updateNavInfo();
+  }
+}
+
+function activate(key, opts={}){
+  activeKey = key;
+  document.querySelectorAll('.tab').forEach(t=> t.classList.toggle('active', t.dataset.key===key));
+  document.querySelectorAll('.panel').forEach(p=> p.classList.toggle('active', p.id==='panel-'+key));
+
+  if(!opts.keepNavPointer && navEnabled){
+    navPointer.dayKey = key;
+    navPointer.itemIdx = (getVisibleIndices(key)[0] ?? 0);
+  }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/** ========= 今日行程 ========= */
+function parseKeyToDate(key){
+  const [y,m,d] = key.split('-').map(n=>parseInt(n,10));
+  return new Date(y, m-1, d, 0,0,0,0);
+}
+function sameYMD(a,b){
+  return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
+}
+function isTodayKey(key){
+  const today = new Date();
+  const dk = parseKeyToDate(key);
+  return sameYMD(today, dk);
+}
+function gotoTodayOrNext(){
+  const today = new Date();
+  const exact = itinerary.find(d=> sameYMD(parseKeyToDate(d.key), today));
+  if(exact){
+    activeKey = exact.key;
+    render();
+    activate(activeKey, {keepNavPointer:false});
+    toast("已跳到：今日行程 ✅");
+    return;
+  }
+  const todayMid = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+  const future = itinerary
+    .map(d=>({key:d.key, dt:parseKeyToDate(d.key)}))
+    .filter(x=> x.dt.getTime() >= todayMid)
+    .sort((a,b)=>a.dt-b.dt)[0];
+
+  if(future){
+    activeKey = future.key;
+    render();
+    activate(activeKey, {keepNavPointer:false});
+    toast("今天不在行程期間，已跳到最近一天");
+  }else{
+    toast("找不到可對應的今日/下一日");
+  }
+}
+
+/** ========= 導航模式 ========= */
+const $navBar = document.getElementById('navBar');
+const $navInfo = document.getElementById('navInfo');
+const $btnNavToggle = document.getElementById('btnNavToggle');
+const $btnPrev = document.getElementById('btnPrev');
+const $btnNext = document.getElementById('btnNext');
+const $btnExitNav = document.getElementById('btnExitNav');
+
+function setNavEnabled(on){
+  navEnabled = on;
+  document.body.classList.toggle('nav-mode', on);
+  $navBar.classList.toggle('hidden', !on);
+  $btnNavToggle.textContent = on ? "🧭 導航：開" : "🧭 導航：關";
+
+  if(on){
+    ensureNavPointerValid(true);
+    jumpToNavCurrent(true);
+    toast("導航模式已開啟");
+  }else{
+    clearNavHighlight();
+    toast("導航模式已關閉");
+  }
+}
+
+function ensureNavPointerValid(forceReset=false){
+  const vis = getVisibleIndices(navPointer.dayKey);
+  if(forceReset || vis.length===0 || !vis.includes(navPointer.itemIdx)){
+    let dayIndex = itinerary.findIndex(d=>d.key===navPointer.dayKey);
+    if(dayIndex < 0) dayIndex = 0;
+
+    if(vis.length>0){
+      navPointer.itemIdx = vis[0];
+      return;
+    }
+    for(let i=dayIndex;i<itinerary.length;i++){
+      const k = itinerary[i].key;
+      const v = getVisibleIndices(k);
+      if(v.length){
+        navPointer.dayKey = k;
+        navPointer.itemIdx = v[0];
+        return;
+      }
+    }
+    for(let i=dayIndex;i>=0;i--){
+      const k = itinerary[i].key;
+      const v = getVisibleIndices(k);
+      if(v.length){
+        navPointer.dayKey = k;
+        navPointer.itemIdx = v[0];
+        return;
+      }
+    }
+    navPointer.dayKey = activeKey;
+    navPointer.itemIdx = 0;
+  }
+}
+
+function clearNavHighlight(){
+  document.querySelectorAll('details.item').forEach(el=> el.classList.remove('nav-current'));
+}
+function highlightNavCurrent(){
+  clearNavHighlight();
+  const el = document.getElementById(`item-${navPointer.dayKey}-${navPointer.itemIdx}`);
+  if(el) el.classList.add('nav-current');
+}
+function navInfoText(){
+  const day = itinerary.find(d=>d.key===navPointer.dayKey);
+  const it = day?.items?.[navPointer.itemIdx];
+  if(!day || !it) return "導航中…";
+  const vis = getVisibleIndices(navPointer.dayKey);
+  const pos = vis.indexOf(navPointer.itemIdx);
+  const count = vis.length;
+  return `目前：${day.dateText}｜${it.time || "—"}｜${it.title}（${pos>=0?pos+1:"?"}/${count}）`;
+}
+function updateNavInfo(){
+  $navInfo.textContent = navInfoText();
+}
+
+function collapseAllDetails(){
+  document.querySelectorAll('details.item').forEach(d => d.open = false);
+}
+function jumpToNavCurrent(openDetail=false){
+  activeKey = navPointer.dayKey;
+  render();
+  activate(activeKey, {keepNavPointer:true});
+
+  const el = document.getElementById(`item-${navPointer.dayKey}-${navPointer.itemIdx}`);
+  if(el){
+    collapseAllDetails();
+    if(openDetail) el.open = true;
+    highlightNavCurrent();
+    setTimeout(()=>{
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+      updateNavInfo();
+    }, 60);
+  }else{
+    updateNavInfo();
+  }
+}
+function moveNav(step){
+  ensureNavPointerValid(false);
+
+  const dayIdx = itinerary.findIndex(d=>d.key===navPointer.dayKey);
+  const vis = getVisibleIndices(navPointer.dayKey);
+  if(!vis.length){
+    ensureNavPointerValid(true);
+    jumpToNavCurrent(true);
+    return;
+  }
+  let pos = vis.indexOf(navPointer.itemIdx);
+  if(pos < 0) pos = 0;
+
+  pos += step;
+
+  if(pos < 0){
+    for(let i=dayIdx-1;i>=0;i--){
+      const k = itinerary[i].key;
+      const v = getVisibleIndices(k);
+      if(v.length){
+        navPointer.dayKey = k;
+        navPointer.itemIdx = v[v.length-1];
+        jumpToNavCurrent(true);
+        return;
+      }
+    }
+    toast("已是最前一個行程點");
+    jumpToNavCurrent(true);
+    return;
+  }
+
+  if(pos >= vis.length){
+    for(let i=dayIdx+1;i<itinerary.length;i++){
+      const k = itinerary[i].key;
+      const v = getVisibleIndices(k);
+      if(v.length){
+        navPointer.dayKey = k;
+        navPointer.itemIdx = v[0];
+        jumpToNavCurrent(true);
+        return;
+      }
+    }
+    toast("已是最後一個行程點");
+    jumpToNavCurrent(true);
+    return;
+  }
+
+  navPointer.itemIdx = vis[pos];
+  jumpToNavCurrent(true);
+}
+
+/** ========= 主題 / 字級 ========= */
+const $toggleTheme = document.getElementById('toggleTheme');
+const $fontMinus = document.getElementById('fontMinus');
+const $fontPlus = document.getElementById('fontPlus');
+
+function setTheme(mode){
+  document.documentElement.setAttribute('data-theme', mode);
+  localStorage.setItem('tokyo_theme', mode);
+  $toggleTheme.textContent = (mode==='dark') ? '☀️ 日間模式' : '🌙 夜間模式';
+}
+function setFont(px){
+  px = Math.max(14, Math.min(20, px));
+  document.documentElement.style.setProperty('--base', px+'px');
+  localStorage.setItem('tokyo_font', String(px));
+  toast(`字級：${px}px`);
+}
+$toggleTheme.onclick = ()=>{
+  const cur = document.documentElement.getAttribute('data-theme') || 'light';
+  setTheme(cur==='dark' ? 'light' : 'dark');
+};
+$fontMinus.onclick = ()=>{
+  const cur = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--base')) || 16;
+  setFont(cur-1);
+};
+$fontPlus.onclick = ()=>{
+  const cur = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--base')) || 16;
+  setFont(cur+1);
+};
+
+/** ========= 搜尋 / 清除 / 濾鏡變更 ========= */
+document.getElementById('btnClear').onclick = ()=>{
+  $searchBox.value = '';
+  render();
+  activate(activeKey, {keepNavPointer:true});
+  if(navEnabled){
+    ensureNavPointerValid(false); jumpToNavCurrent(true); }
+};
+$searchBox.addEventListener('input', ()=>{
+  render();
+  activate(activeKey, {keepNavPointer:true});
+  if(navEnabled){
+    ensureNavPointerValid(false); jumpToNavCurrent(false); }
+});
+$sortSel.addEventListener('change', ()=>{
+  render();
+  activate(activeKey, {keepNavPointer:true});
+  if(navEnabled){
+    ensureNavPointerValid(false); jumpToNavCurrent(true); }
+});
+$slotSel.addEventListener('change', ()=>{
+  render();
+  activate(activeKey, {keepNavPointer:true});
+  if(navEnabled){
+    ensureNavPointerValid(false); jumpToNavCurrent(true); }
+});
+
+/** ========= 綁定：今日/導航 ========= */
+document.getElementById('btnToday').onclick = ()=> {
+  gotoTodayOrNext();
+  if(navEnabled){
+    navPointer.dayKey = activeKey;
+    ensureNavPointerValid(true);
+    jumpToNavCurrent(true);
+  }
+};
+
+$btnNavToggle.onclick = ()=> setNavEnabled(!navEnabled);
+$btnExitNav.onclick = ()=> setNavEnabled(false);
+$btnPrev.onclick = ()=> moveNav(-1);
+$btnNext.onclick = ()=> moveNav(+1);
+
+/** ========= 初始化 ========= */
+setTheme(localStorage.getItem('tokyo_theme') || 'light');
+setFont(parseInt(localStorage.getItem('tokyo_font') || "16", 10));
+render();
+activate(activeKey, {keepNavPointer:true});
+</script>
+</body>
+</html>
