@@ -191,9 +191,7 @@
     .hero{border:1px solid var(--border); border-radius:14px; overflow:hidden; background:var(--btnbg2); margin:12px 0;}
     .hero .cap{padding:10px 12px; border-top:1px solid var(--border); color:var(--muted); font-size:13px; line-height:1.5;}
     .items{margin-top:10px; display:flex; flex-direction:column; gap:10px}
-    details.item{background:var(--itembg); border:1px solid var(--border); border-radius:14px; padding:10px 12px;
-      scroll-margin-top: 160px; /* 避免被上方固定工具列遮住 */
-    }
+    details.item{background:var(--itembg); border:1px solid var(--border); border-radius:14px; padding:10px 12px;}
     details.item.nav-current{border-color:var(--accent); box-shadow:0 0 0 3px var(--accentring);}
     summary{list-style:none; cursor:pointer; display:flex; gap:10px; align-items:flex-start; justify-content:space-between; -webkit-tap-highlight-color: transparent;}
     summary::-webkit-details-marker{display:none}
@@ -1025,17 +1023,11 @@ function jumpToNavCurrent(openDetail=false){
     collapseAllDetails();
     if(openDetail) el.open = true;
     highlightNavCurrent();
-    requestAnimationFrame(()=>{
-      requestAnimationFrame(()=>{
-        const headerEl = document.querySelector('header');
-        const headerH = headerEl ? headerEl.offsetHeight : 0;
-        const rect = el.getBoundingClientRect();
-        const targetY = Math.max(0, window.scrollY + rect.top - headerH - 12);
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
-        updateNavInfo();
-      });
-    });
-}else{
+    setTimeout(()=>{
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+      updateNavInfo();
+    }, 60);
+  }else{
     updateNavInfo();
   }
 }
